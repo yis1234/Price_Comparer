@@ -8,9 +8,9 @@ by Sun Woo Yi
 
 def check_measurement_units():
     unit_choice_error = "Sorry that is not a valid unit"
-    valid_snacks = [["kilogram", "kg"], ["litre", "l"]]
+    valid_units = [["kilogram", "kg"], ["litre", "l"]]
     unit_choice = input("Please enter the measurement unit: ").lower()
-    for unit in valid_snacks:
+    for unit in valid_units:
         if unit_choice in unit:
             unit_choice = unit[0].title()
             return unit_choice
