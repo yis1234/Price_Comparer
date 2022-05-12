@@ -1,4 +1,4 @@
-""" Component 2 of Price Comparer
+""" Component 2 test 1 of Price Comparer
 This component makes a loop until 5 items have been entered or the escape code
 "xxx" is entered
 by Sun Woo Yi

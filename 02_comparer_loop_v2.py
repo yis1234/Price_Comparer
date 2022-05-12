@@ -1,8 +1,10 @@
 """ Component 2 of Price Comparer
-This component is a new version of 02_comparer_loop_v1 which makes a loop until
-5 items have been entered or the escape code "xxx" is entered. In this new
-version, I used if statements to print out the amount of items entered after
-the user has entered an item name.
+I chose test 1 as I believed that a function was not needed for the code and
+thought that test 1 would be better to develop than test 2.
+This component is a new version of 02_comparer_loop_testing1 which makes a loop
+until 5 items have been entered or the escape code "xxx" is entered. In this
+new version, I used if statements to print out the amount of items entered
+after the user has entered an item name.
 by Sun Woo Yi
 05/05/2022
 """
