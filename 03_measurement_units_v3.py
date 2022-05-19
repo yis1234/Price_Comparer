@@ -1,6 +1,5 @@
-""" Based on 03_measurement_units_v1, this program makes the function more
-flexible by using generic variable names – so that it can be used to check
-for valid choices from any list.
+""" Based on 03_measurement_units_v2, this program makes the function more
+flexible by allowing reference numbers to be entered to choose the unit.
 by Sun Woo Yi
 10/05/2022
 """
@@ -22,9 +21,7 @@ def check_measurement_units(question, valid_choices):
 # Main routine
 # temporary input statement – during development
 ask_for_unit = "Please enter the measurement unit: "
-valid_units = [["kilogram", "kg"], ["litre", "l"]]
+valid_units = [["kilogram", "kg", "1"], ["litre", "l", "2"]]
 for test in range(6):
     print(f"You chose {check_measurement_units(ask_for_unit, valid_units)} "
           f"as the unit")
-
-getting_input = input("Press enter to exit")
