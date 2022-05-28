@@ -1,9 +1,8 @@
-""" Component 4 version 2 of Price Comparer
-In this version, I will make sure that the user enters a valid number so that
-the program will not crash, and I will also make sure that the program does not
-crash if the user enters a string instead of a number or there is no input.
+""" Component 4 version 3 of Price Comparer
+In this version, I will calculate the price per unit for each item and then
+will print out the price per unit.
 by Sun Woo Yi
-27/05/2022
+28/05/2022
 """
 
 
@@ -31,4 +30,5 @@ for i in range(5):
     amount_list.append(amount)
 
 for i in range(5):
-    print(price_list[i], amount_list[i])
+    price_unit = price_list[i]/amount_list[i] # Calculating the price per unit.
+    print(price_unit)
