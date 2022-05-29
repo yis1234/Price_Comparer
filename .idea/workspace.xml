@@ -58,7 +58,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.q">
+  <component name="RunManager" selected="Python.04_product_comparer_v6">
     <configuration name="04_product_comparer_v" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Price_Comparer" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -187,8 +187,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.q" />
         <item itemvalue="Python.04_product_comparer_v6" />
+        <item itemvalue="Python.q" />
         <item itemvalue="Python.04_product_comparer_v5" />
         <item itemvalue="Python.04_product_comparer_v4" />
         <item itemvalue="Python.04_product_comparer_v4" />

@@ -1,6 +1,5 @@
-""" Component 4 version 5 of Price Comparer
-In this version, I will make the price per units to be printed from smallest to
-largest.
+""" Component 4 version 6 of Price Comparer
+In this version, I will print the price per unit for each item.
 by Sun Woo Yi
 28/05/2022
 """
@@ -33,6 +32,24 @@ def yes_no_response(question):
         return True
 
 
+def item_data(a, b):
+    if len(a) == 1:
+        print(f"Item {b[0][1]}: {b[0][0]}")
+    elif len(a) == 2:
+        print(f"Item {b[0][1]}: {b[0][0]}")
+        print(f"Item {b[1][1]}: {b[1][0]}")
+    elif len(a) == 3:
+        print(f"Item {b[0][1]}: {b[0][0]}")
+        print(f"Item {b[1][1]}: {b[1][0]}")
+        print(f"Item {b[2][1]}: {b[2][0]}")
+    elif len(a) == 4:
+        print(f"Item {b[0][1]}: {b[0][0]}")
+        print(f"Item {b[1][1]}: {b[1][0]}")
+        print(f"Item {b[2][1]}: {b[2][0]}")
+        print(f"Item {b[3][1]}: {b[3][0]}")
+
+
+
 price_list = []
 amount_list = []
 price_unit_list = []
@@ -56,9 +73,9 @@ for i in range(5):
                 price_unit_list.append(price_unit)
                 original_data_list[i].append(price_unit_list[i])
                 original_data_list[i].append(i + 1)
-            print(original_data_list)
             price_unit_list.sort()
             print(*price_unit_list, sep="\n")
+            item_data(price_unit_list, original_data_list)
             print("Thank you for using the program.")
             exit()
         else:
@@ -69,6 +86,13 @@ for i in range(5):
     price_unit = price_list[i] / amount_list[
         i]  # Calculating the price per unit.
     price_unit_list.append(price_unit)
-price_unit_list.sort()
-print(*price_unit_list, sep="/n")
+    original_data_list[i].append(price_unit_list[i])
+    original_data_list[i].append(i + 1)
+    price_unit_list.sort()
+print(*price_unit_list, sep="\n")
+print(f"Item {original_data_list[0][1]}: {original_data_list[0][0]}")
+print(f"Item {original_data_list[1][1]}: {original_data_list[1][0]}")
+print(f"Item {original_data_list[2][1]}: {original_data_list[2][0]}")
+print(f"Item {original_data_list[3][1]}: {original_data_list[3][0]}")
+print(f"Item {original_data_list[4][1]}: {original_data_list[4][0]}")
 print("Thank you for using the program.")
