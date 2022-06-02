@@ -1,6 +1,6 @@
-""" Component 4 version 6 of Price Comparer
-In this version, I will print the price per unit for each item and I will also
-have the price and the item number printed together.
+""" Component 4 version 7 of Price Comparer
+In this version, I will make the outputs much more neater and easier to read so
+that the user won't have much difficulty in reading the output.
 by Sun Woo Yi
 28/05/2022
 """
@@ -50,7 +50,6 @@ def item_data(items, item_place):
         print(f"Item {item_place[3][1]}: {item_place[3][0]}")
 
 
-
 price_list = []
 amount_list = []
 price_unit_list = []
@@ -75,7 +74,9 @@ for i in range(5):
                 original_data_list[i].append(price_unit_list[i])
                 original_data_list[i].append(i + 1)
             price_unit_list.sort()
-            print(*price_unit_list, sep="\n")
+            print("Item prices per unit (cheapest to most expensive):")
+            print("$", end="")
+            print(*price_unit_list, sep="\n$")
             item_data(price_unit_list, original_data_list)
             print("Thank you for using the program.")
             exit()
@@ -90,7 +91,8 @@ for i in range(5):
     original_data_list[i].append(price_unit_list[i])
     original_data_list[i].append(i + 1)
     price_unit_list.sort()
-print(*price_unit_list, sep="\n")
+print("$", end="")
+print(*price_unit_list, sep="\n$")
 print(f"Item {original_data_list[0][1]}: {original_data_list[0][0]}")
 print(f"Item {original_data_list[1][1]}: {original_data_list[1][0]}")
 print(f"Item {original_data_list[2][1]}: {original_data_list[2][0]}")
