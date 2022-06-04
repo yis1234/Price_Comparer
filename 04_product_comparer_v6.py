@@ -8,8 +8,8 @@ by Sun Woo Yi
 
 # a float checking function
 def float_checker(question):
-    global response
     valid = False
+    global response
     while not valid:
         try:
             response = float(input(question))
