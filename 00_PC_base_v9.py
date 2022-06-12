@@ -30,7 +30,7 @@ def check_blank(question):
                 else:
                     return response
         if not response.isalpha():
-            print("Error – please enter a name.")
+            print("Error – please enter a word or letter.")
         else:
             return response
 
@@ -46,13 +46,10 @@ def get_choice(choice, valid_choices):
 
 
 # Function containing instructions
-def show_instructions(valid_responses):
-    instructions = ""
-    while not instructions:
-        instructions = check_blank("Would you like to read the "
-                                   "instructions (Y or N)? ").lower()
-        instructions = (get_choice(instructions, valid_responses))
-    if instructions == "Y":
+def show_instructions():
+    instructions = yes_no_response("Would you like to read the "
+                                       "instructions (Y or N)? ")
+    if instructions is True:
         print("**********************************************************\n"
               "\n\t\t**** Price Comparer Instructions ****\n"
               "\nYou will be asked your name and then you will be shown how\n"
@@ -205,16 +202,14 @@ price_unit_list = []
 original_data_list = [[], [], [], [], []]
 item_price_list = []
 original_price_unit_list = []
-valid_yes_no = [["y", "yes"], ["n", "no"]]
 
 count = 0
 MAX_ENTRIES = 5
 inputs = 0
 
-
 # Main routine
 # TO get the name of the user
-show_instructions(valid_yes_no)
+show_instructions()
 name = check_blank("What is your name? ")
 # Getting the measurement units that are going to be used to compare different
 # items
