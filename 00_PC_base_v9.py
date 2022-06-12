@@ -150,19 +150,19 @@ def item_data(item_info, item_place, item, unit):
 # function that prints out the part of the summary of the program where it
 # prints out the cheapest and most expensive item affordable with your budget
 def budget_checker(budget, item_price, item_name, price_per_unit, item_unit):
-    unit_list = []
+    price_unit_list = []
     print(f"\nYour budget is ${budget}\n")
-    items = zip(item_price, item_name)
-    for price, name in items:
+    item_info = zip(item_price, item_name)
+    for price, name_of_item in item_info:
         if price > budget:
-            print(f"{name} is too expensive.")
+            print(f"{name_of_item} is too expensive.")
         elif price <= budget:
-            print(f"{name} is affordable.")
-    price_ppu = zip(item_price, price_per_unit)
-    for cost, unit in price_ppu:
+            print(f"{name_of_item} is affordable.")
+    item_price_info = zip(item_price, price_per_unit)
+    for cost, cost_per_unit in item_price_info:
         if cost <= budget:
-            unit_list.append(unit)
-    if len(unit_list) == 0:
+            price_unit_list.append(cost_per_unit)
+    if len(price_unit_list) == 0:
         # if there are no items that are equal to or below yur budget
         print("\nSorry, no items are affordable with your budget.")
         # the average price per unit of all the users items
@@ -172,11 +172,11 @@ def budget_checker(budget, item_price, item_name, price_per_unit, item_unit):
         # cheapest and most expensive item (price per unit) affordable with
         # your budget
         print(f"\nThe cheapest item affordable with your budget is "
-              f"{item_name[price_per_unit.index(min(unit_list))]} at "
-              f"${min(unit_list)} per {item_unit}")
+              f"{item_name[price_per_unit.index(min(price_unit_list))]} at "
+              f"${min(price_unit_list)} per {item_unit}")
         print(f"The most expensive item affordable with your budget is "
-              f"{item_name[price_per_unit.index(max(unit_list))]} at "
-              f"${max(unit_list)} per {item_unit}")
+              f"{item_name[price_per_unit.index(max(price_unit_list))]} at "
+              f"${max(price_unit_list)} per {item_unit}")
     # cheapest and most expensive item (price)
     print(f"\nThe cheapest item is "
           f"{item_name[item_price.index(min(item_price))]} at "
@@ -191,10 +191,10 @@ def budget_checker(budget, item_price, item_name, price_per_unit, item_unit):
     print(f"The most expensive item per {item_unit} is "
           f"{item_name[price_per_unit.index(max(price_per_unit))]} at "
           f"${max(price_per_unit)}")
-    if len(unit_list) > 0:
+    if len(price_unit_list) > 0:
         # recommended item to purchase (within user's budget)
         print(f"\nThe recommended item to purchase is "
-              f"{item_name[price_per_unit.index(min(unit_list))]}")
+              f"{item_name[price_per_unit.index(min(price_unit_list))]}")
 
 
 # Set up dictionaries / lists needed to hold data
