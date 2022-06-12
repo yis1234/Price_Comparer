@@ -1,14 +1,25 @@
-""" Added some extra details to the program to make it more user-friendly.
-The program has got more information on where the user inputs their information
-and the feedback the user gets.
+""" Final version of the 00_PC_base. This version will be used as the final
+version of the program. It has been neatly formatted so that the user can
+easily input the data for the items and so that the user can easily read and
+understand the output.
+by Sun Woo Yi
+12/06/2022
 """
 
+# import statement for some of the rounding needed in the code
 import numpy as np
 
 
+# Function to check if the user has entered a blank string. But this function
+# allows the user to input a space in between their input for situations such
+# as "Sun Woo" or "Coca Cola"
 def check_blank(question):
     while True:
         response = input(question).title()
+        # this allows the user to input a space in between their input for
+        # situations such as "Sun Woo" or "Coca Cola" but it will not allow
+        # the user to input a space at the end of their input which gets rid
+        # of the possibility of a blank string/space as the only string.
         if " " in response:
             if response.count(" ") == 1:
                 if response.index(" ") == 0 or response.index(" ") == len(
@@ -70,6 +81,9 @@ def show_instructions(valid_responses):
               "******************************************************\n")
 
 
+# Function that will ask the user for their chosen units and then will check if
+# it is a valid unit to choose from. If it is not, it will ask the user to
+# re-enter the unit.
 def check_measurement_units(question, valid_choices):
     unit_choice_error = "Sorry that is not a valid unit"
     global choice
@@ -83,7 +97,7 @@ def check_measurement_units(question, valid_choices):
     return check_measurement_units(question, valid_choices)
 
 
-# a float checking function
+# a float checking function to make sure the user has entered a valid float
 def float_checker(question):
     global response
     valid = False
@@ -99,6 +113,7 @@ def float_checker(question):
     return response
 
 
+# function to check if the user has entered yes or no.
 def yes_no_response(question):
     error_message = "Please answer 'Y' or 'N'"
     valid_responses = ['y', 'n', 'yes', 'no']
@@ -113,6 +128,8 @@ def yes_no_response(question):
         return True
 
 
+# function that prints out the part of the summary of the program where it
+# prints out the names of the items and their prices per unit.
 def item_data(item_info, item_place, item, unit):
     if len(item_info) == 1:
         print(f"{item[0]}: ${item_place[0][0]:.2f} per {unit}")
@@ -130,6 +147,8 @@ def item_data(item_info, item_place, item, unit):
         print(f"{item[3]}: ${item_place[3][0]:.2f} per {unit}")
 
 
+# function that prints out the part of the summary of the program where it
+# prints out the cheapest and most expensive item affordable with your budget
 def budget_checker(budget, item_price, item_name, price_per_unit, item_unit):
     unit_list = []
     print(f"\nYour budget is ${budget}\n")
@@ -144,22 +163,28 @@ def budget_checker(budget, item_price, item_name, price_per_unit, item_unit):
         if cost <= budget:
             unit_list.append(unit)
     if len(unit_list) == 0:
+        # if there are no items that are equal to or below yur budget
         print("\nSorry, no items are affordable with your budget.")
-    else:
+        # the average price per unit of all the users items
         print(f"\nThe average price per {item_unit} for your items is "
               f"${np.mean(price_per_unit):.2f}")
+    else:
+        # cheapest and most expensive item (price per unit) affordable with
+        # your budget
         print(f"\nThe cheapest item affordable with your budget is "
               f"{item_name[price_per_unit.index(min(unit_list))]} at "
               f"${min(unit_list)} per {item_unit}")
         print(f"The most expensive item affordable with your budget is "
               f"{item_name[price_per_unit.index(max(unit_list))]} at "
               f"${max(unit_list)} per {item_unit}")
+    # cheapest and most expensive item (price)
     print(f"\nThe cheapest item is "
           f"{item_name[item_price.index(min(item_price))]} at "
           f"${min(item_price)}")
     print(f"The most expensive item is "
           f"{item_name[item_price.index(max(item_price))]} at "
           f"${max(item_price)}")
+    # cheapest and most expensive item (price per unit) regardless of budget
     print(f"\nThe cheapest item per {item_unit} is "
           f"{item_name[price_per_unit.index(min(price_per_unit))]} at "
           f"${min(price_per_unit)}")
@@ -167,22 +192,25 @@ def budget_checker(budget, item_price, item_name, price_per_unit, item_unit):
           f"{item_name[price_per_unit.index(max(price_per_unit))]} at "
           f"${max(price_per_unit)}")
     if len(unit_list) > 0:
+        # recommended item to purchase (within user's budget)
         print(f"\nThe recommended item to purchase is "
               f"{item_name[price_per_unit.index(min(unit_list))]}")
 
 
-# initialize comparer loop so that it runs at least once
+# Set up dictionaries / lists needed to hold data
 item_list = []
-count = 0
-MAX_ENTRIES = 5
 price_list = []
 amount_list = []
 price_unit_list = []
 original_data_list = [[], [], [], [], []]
-inputs = 0
 item_price_list = []
 original_price_unit_list = []
 valid_yes_no = [["y", "yes"], ["n", "no"]]
+
+count = 0
+MAX_ENTRIES = 5
+inputs = 0
+
 
 # Main routine
 # TO get the name of the user
@@ -195,16 +223,18 @@ unit = check_measurement_units("Please enter the measurement unit (kg, l, g, "
                                          ["litre", "l", "2"],
                                          ["gram", "g", "3"],
                                          ["millilitre", "ml", "4"]])
-print(f"You chose {unit} as the unit")
+print(f"You chose {unit} as the unit")  # shows the user what unit they chose
 budget = float_checker("What is your budget: $")
 
 # To get the name of the products that they are going to compare.
 while count < MAX_ENTRIES:
     if MAX_ENTRIES - count > 1:
         for i in range(5):
+            # get details of the item
             print(f"\nYou have {MAX_ENTRIES - count} entries left.")
             item_input = yes_no_response(
-                "Do you have an item to compare (Y or N)? ")
+                "Do you have an item to compare (Y or N)? ")  # gives user the
+            # option to exit the program
             if item_input:
                 item_name = check_blank("Please enter the name of the"
                                         " item: ").title()
@@ -220,21 +250,23 @@ while count < MAX_ENTRIES:
                     for i in range(len(price_list)):
                         price_unit = price_list[i] / amount_list[
                             i]  # Calculating the price per unit.
-                        price_unit_list.append(price_unit)
+                        price_unit_list.append(price_unit)  # add to list
+                        # add to the original price unit list rounded to 2d.p.
                         original_price_unit_list.append(round(price_unit, 2))
                         price_unit_list = list(
                             np.around(np.array(price_unit_list), 2))
+                        # rounded to 2d.p.
                         original_data_list[i].append(price_unit_list[i])
                         original_data_list[i].append(i + 1)
-                    price_unit_list.sort()
+                    price_unit_list.sort()  # to sort the price per unit list
                     print(f"\nItem prices per {unit} "
                           f"(cheapest to most expensive):")
-                    print("$", end="")
+                    print("$", end="")  # adds a $ sign in front of the prices
                     print(*price_unit_list, sep="\n$")
                     print()
                     print(f"The price per {unit} for each item is:")
                     item_data(price_unit_list, original_data_list, item_list,
-                              unit)
+                              unit)  # calls the function to print the data
                     budget_checker(budget, price_list, item_list,
                                    original_price_unit_list, unit)
                     print(f"Thank you for using the program {name}.")
@@ -248,11 +280,12 @@ else:
         price_unit = price_list[i] / amount_list[
             i]  # Calculating the price per unit.
         price_unit_list.append(price_unit)
+        # appends data to the original price unit list rounded to 2d.p.
         original_price_unit_list.append(round(price_unit, 2))
         price_unit_list = list(np.around(np.array(price_unit_list), 2))
         original_data_list[i].append(price_unit_list[i])
         original_data_list[i].append(i + 1)
-        price_unit_list.sort()
+        price_unit_list.sort()  # to sort the list in ascending order
     print("Item prices per unit (cheapest to most expensive):")
     print("$", end="")
     print(*price_unit_list, sep="\n$")
