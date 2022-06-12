@@ -48,7 +48,7 @@ def get_choice(choice, valid_choices):
 # Function containing instructions
 def show_instructions():
     instructions = yes_no_response("Would you like to read the "
-                                       "instructions (Y or N)? ")
+                                   "instructions (Y or N)? ")
     if instructions is True:
         print("**********************************************************\n"
               "\n\t\t**** Price Comparer Instructions ****\n"
